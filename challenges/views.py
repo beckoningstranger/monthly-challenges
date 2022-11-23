@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 
 monthly_challenges = {
@@ -21,11 +21,15 @@ monthly_challenges = {
 
 
 def monthly_challenge_by_number(request, month):
-    return HttpResponse(month)
+    months = list(monthly_challenges.keys())
+    while month >= 12:
+        month = month - 12
+    redirect_month = months[month - 1]
+    return HttpResponseRedirect("/challenges/" + redirect_month)
 
 
 def monthly_challenge(request, month):
     try:
         return HttpResponse(monthly_challenges[month])
     except KeyError:
-        return HttpResponse("Month not implemented yet!")
+        return HttpResponseNotFound("Month not implemented yet!")

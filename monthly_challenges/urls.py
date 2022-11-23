@@ -19,5 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # The next line points to app "challenges" and file "urls" in that app, note the trailing /
-    path('challenges/', include("challenges.urls"))
+    path("challenges/", include("challenges.urls"))
 ]

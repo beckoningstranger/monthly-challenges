@@ -50,8 +50,7 @@ def monthly_challenge(request, month):
         challenge_text = monthly_challenges[month]
         return render(request, "challenges/challenge.html", {
             "text": challenge_text,
-            "month_name": month.capitalize(),
-            "challenge_name": f"Your Challenge for {month.capitalize()}"
+            "month_name": month,
         })
     except KeyError:
         return HttpResponseNotFound("<h1>Month not implemented yet!</h1>")

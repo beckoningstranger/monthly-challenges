@@ -60,6 +60,7 @@ TEMPLATES = [
         'DIRS': [
             # BASE_DIR / "challenges" / "templates"
             # Put global templates here
+            BASE_DIR / "templates"
         ],
         'APP_DIRS': True,
         'OPTIONS': {

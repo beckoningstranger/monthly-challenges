@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
 
 
@@ -49,4 +49,4 @@ def monthly_challenge(request, month):
             "month_name": month,
         })
     except KeyError:
-        return HttpResponseNotFound("<h1>Month not implemented yet!</h1>")
+        raise Http404()  # This does not show during development, because DEBUG = True in settings.py
